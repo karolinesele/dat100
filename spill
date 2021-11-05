@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Nov  5 00:44:53 2021
+
+@author: ninasele
+"""
+
+# Skriv en klasse «Sporsmaal» som skal representere spørsmålene. Hver instans av denne
+# klassen representerer ett spørsmål. Denne klassen skal ha egenskapene spørsmål,
+# svaralternativer og korrekt svar. Spørsmål er selve spørsmålsteksten. Svaralternativer er ei
+# liste over mulige svar. Korrekt svar er et tall som sier hvilket av elementene i svaralternativer
+# lista som er korrekt. Dette skal være standard egenskaper på samme måte som at klassen
+# Punkt fra forelesningene har egenskapene x (x-koordinat til punktet) og y (y-koordinat til
+# punktet).
+
+
+class Sporsmaal:
+    def __init__(self, sporsmal, svaralternativ, korrekt_svar):
+        self.sporsmaal = sporsmal
+        self.svaralternativ = svaralternativ
+        self.korrekt_svar = korrekt_svar
+
+    def sjekk_svar(self, svar):
+        if int(svar) == self.korrekt_svar:
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        string = self.sporsmaal + "\n"
+        for nummer, valg in enumerate(self.svaralternativ):
+            string += str(nummer) + ": " + str(valg) + "\n"
+        return string
+
+
+def lag_sporsmaal():
+    liste = []
+    liste.append(Sporsmaal("\nDen delen av harddisken som kjører programmet kalles?", ["RAM", "Harddisk", "CPU", "Sekundærlager"], 2))
+    liste.append(Sporsmaal("En __ er nok minne til å lagre en bokstav eller et lite heltall", ["bit", "byte", "bryter", "transistor"], 1))
+    liste.append(Sporsmaal("En byte består av åtte __", ["bits", "instruksjoner", "variabler", "CPU-er"], 0))
+    liste.append(Sporsmaal("Hvilket tallsystem bruker man bare 0-ere eller 1-ere?", ["heksadesimal", "oktal", "binær", "desimal"], 2))
+    liste.append(Sporsmaal("Hvilket binært tall representerer tallet 23?", ["1011", "10111", "11011", "101111", "111011"], 1))
+    liste.append(Sporsmaal("Datamaskiner kan bare utføre direkte programmer som er skrevet i __?", ["assembly", "c", "java", "maskinkode", "python"], 3))
+    liste.append(Sporsmaal("Python er et tolket eller kompilert språl?", ["tolket", "kompilert"], 1))
+    return liste
+
+def kjor_sporsmaal():
+    sporsmaalliste = lag_sporsmaal()
+    for sporsmaal in sporsmaalliste:
+        print(sporsmaal)
+        svar1 = input(f"Spiller 0: {spillerne[0]} velger > ")
+        svar2 = input(f"Spiller 1: {spillerne[1]} velger > ")
+        if sporsmaal.sjekk_svar(svar1):
+            spillerne[0].poeng += 1
+            print(f"{spillerne[0]} valgte riktig svar! + 1 poeng \n")
+        else:
+            print(f"{spillerne[0]} valgte feil svar! + 0 poeng \n")
+        if sporsmaal.sjekk_svar(svar2):
+            spillerne[1].poeng += 1
+            print(f"{spillerne[1]} valgte riktig svar! + 1 poeng \n")
+        else:
+            print(f"{spillerne[1]} valgte feil svar! + 0 poeng \n")
+
+class Spiller:
+    def __init__(self, navn, poeng):
+        self.navn = navn
+        self.poeng = poeng
+
+    def __str__(self):
+        return f"{self.navn}"
+
+
+if __name__ == '__main__':
+    spillerne = []
+    poeng = 0
+    for i in range(2):
+        navn = input(f"Navn til spiller {i}: ")
+        spilleren = Spiller(navn, poeng)
+        spillerne.append(spilleren)
+    kjor_sporsmaal()
+    vinner = spillerne[0]
+    for spiller in spillerne:
+        if spiller.poeng > vinner.poeng:
+            vinner = spiller
+    print(f"Vinneren ble {vinner.navn} som har {vinner.poeng} poeng")
+    print(f"{spillerne[0]} fikk {spillerne[0].poeng} poeng, mens {spillerne[1]} fikk {spillerne[1].poeng} poeng")
+
+
