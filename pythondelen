@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Nov  4 23:30:26 2021
+
+@author: ninasele
+"""
+
+liste.append(Sporsmaal("Den delen av harddisken som kjører programmet kalles?", ["RAM", "Harddisk", "CPU", "Sekundærlager"], 2))
+    liste.append(Sporsmaal("En __ er nok minne til å lagre en bokstav eller et lite heltall", ["bit", "byte", "bryter", "transistor"], 1))
+    liste.append(Sporsmaal("En byte består av åtte __", ["bits", "instruksjoner", "variabler", "CPU-er"], 0))
+    liste.append(Sporsmaal("Hvilket tallsystem bruker man bare 0-ere eller 1-ere?", ["heksadesimal", "oktal", "binær", "desimal"], 2))
+    liste.append(Sporsmaal("Hvilket binært tall representerer tallet 23?", ["1011", "10111", "11011", "101111", "111011"], 1))
+    liste.append(Sporsmaal("Datamaskiner kan bare utføre direkte programmer som er skrevet i __?", ["assembly", "c", "java", "maskinkode", "python"], 3))
+    liste.append(Sporsmaal("Python er et tolket eller kompilert språl?", ["tolket", "kompilert"], 1))
+Skriv til Henriette Sele
+Aa
+
