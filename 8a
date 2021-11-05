@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Oct 20 12:12:35 2021
+
+@author: ninasele
+"""
+
+    
+ordliste = dict()
+linjeteller = dict()
+x = 0
+
+
+
+with open("oving_8_rein_tekst.txt", "r") as fila:
+    for linje in fila:
+        x += 1
+        ordene = linje.split()
+        for ordet in ordene:
+            ordet = ordet.lower()
+            if ordet in ordliste:
+                teller = ordliste[ordet]
+                teller += 1
+                ordliste[ordet] = teller
+            else:
+                ordliste[ordet] = 1
+                linjeteller[ordet] = x
+    for ordet in ordliste:
+        print(f"{ordet} : forekommer {ordliste[ordet]} gang(er); første gang i linje {linjeteller[ordet]}")
+
+
